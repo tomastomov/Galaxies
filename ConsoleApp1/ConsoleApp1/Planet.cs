@@ -27,9 +27,9 @@ namespace ConsoleApp1
             var stringBuilder = new StringBuilder();
             var isInhabitated = Inhabitated ? "yes" : "no";
 
-            stringBuilder.AppendLine($"           Name:{Name}");
-            stringBuilder.AppendLine($"           Type:{PlanetType}");
-            stringBuilder.AppendLine($"           Support Life:{isInhabitated}");
+            stringBuilder.AppendLine($"           Name: {Name}");
+            stringBuilder.AppendLine($"           Type: {PlanetType}");
+            stringBuilder.AppendLine($"           Support Life: {isInhabitated}");
 
             if (Moons.Count > 0)
             {

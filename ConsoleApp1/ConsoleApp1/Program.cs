@@ -162,7 +162,7 @@ namespace ConsoleApp1
             {
                 sb.Append($"{next.Name}, ");
                 return sb;
-            }, sb => sb.ToString().TrimEnd(','));
+            }, sb => sb.ToString().TrimEnd(',').Trim(' '));
         }
 
         static string GetName(string firstPart, string secondPart = null)

@@ -6,13 +6,13 @@ namespace ConsoleApp1
 {
     public class Star : INamedSpaceObject
     {
-        public Star(string name, double mass, double size, int temperature, double compatibility)
+        public Star(string name, double mass, double size, int temperature, double luminosity)
         {
             Name = name;
             Mass = mass;
             Size = size;
             Temperature = temperature;
-            Compatibility = compatibility;
+            Luminosity = luminosity;
             Planets = new List<Planet>();
         }
 
@@ -26,7 +26,7 @@ namespace ConsoleApp1
 
         public int Temperature { get; private set; }
 
-        public double Compatibility { get; private set; }
+        public double Luminosity { get; private set; }
 
         public ICollection<Planet> Planets { get; private set; }
 
@@ -35,10 +35,10 @@ namespace ConsoleApp1
             var stringBuilder = new StringBuilder();
 
             stringBuilder.AppendLine($"   -   Name: {Name}");
-            stringBuilder.AppendLine($"       Class: {Class} $({Mass}, {Size}, {Temperature}, {Compatibility})");
+            stringBuilder.AppendLine($"       Class: {Class} ({Mass}, {Size}, {Temperature}, {Luminosity})");
             if (Planets.Count > 0)
             {
-                stringBuilder.AppendLine("        Planets:");
+                stringBuilder.AppendLine("       Planets:");
                 foreach (var planet in Planets)
                 {
                     stringBuilder.AppendLine(planet.ToString());
@@ -61,7 +61,7 @@ namespace ConsoleApp1
             {
                 return 'A';
             }
-            else if(IsValid(6000, 7500, 1.5, 5, 1.04, 1.4, 0.15, 1.4))
+            else if(IsValid(6000, 7500, 1.5, 5, 1.04, 1.4, 1.15, 1.4))
             {
                 return 'F';
             }
@@ -83,7 +83,7 @@ namespace ConsoleApp1
 
         private bool IsValid(int lowerTempLimit, int upperTempLimit, double lowerCompatibilityLimit, double upperCompatibilityLimit, double lowerMassLimit, double upperMassLimit, double lowerSizeLimit, double upperSizeLimit)
         {
-            return Temperature >= lowerTempLimit && Temperature < upperTempLimit && Compatibility >= lowerCompatibilityLimit && Compatibility < upperCompatibilityLimit && Mass >= lowerMassLimit && Mass < upperMassLimit && Size >= lowerSizeLimit && Size < upperSizeLimit;
+            return Temperature >= lowerTempLimit && Temperature < upperTempLimit && Luminosity >= lowerCompatibilityLimit && Luminosity < upperCompatibilityLimit && Mass >= lowerMassLimit && Mass < upperMassLimit && Size >= lowerSizeLimit && Size < upperSizeLimit;
         }
     }
 }
