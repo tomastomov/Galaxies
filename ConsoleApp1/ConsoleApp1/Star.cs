@@ -36,13 +36,17 @@ namespace ConsoleApp1
 
             stringBuilder.AppendLine($"   -   Name: {Name}");
             stringBuilder.AppendLine($"       Class: {Class} ({Mass}, {Size}, {Temperature}, {Luminosity})");
+            stringBuilder.AppendLine("       Planets:");
             if (Planets.Count > 0)
             {
-                stringBuilder.AppendLine("       Planets:");
                 foreach (var planet in Planets)
                 {
                     stringBuilder.AppendLine(planet.ToString());
                 }
+            }
+            else
+            {
+                stringBuilder.AppendLine("            None");
             }
             return stringBuilder.ToString();
         }
@@ -57,11 +61,11 @@ namespace ConsoleApp1
             {
                 return 'B';
             }
-            else if(IsValid(7500, 10000, 5, 25, 1.4, 2.1, 1.4, 1.8))
+            else if (IsValid(7500, 10000, 5, 25, 1.4, 2.1, 1.4, 1.8))
             {
                 return 'A';
             }
-            else if(IsValid(6000, 7500, 1.5, 5, 1.04, 1.4, 1.15, 1.4))
+            else if (IsValid(6000, 7500, 1.5, 5, 1.04, 1.4, 1.15, 1.4))
             {
                 return 'F';
             }

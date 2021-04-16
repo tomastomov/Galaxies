@@ -72,16 +72,16 @@ namespace ConsoleApp1
                         switch (listType)
                         {
                             case "galaxies":
-                                Console.WriteLine(GetListedSpaceObject(galaxies));
+                                Console.WriteLine(GetListedSpaceObject(galaxies) ?? "None");
                                 break;
                             case "stars":
-                                Console.WriteLine(GetListedSpaceObject(galaxies.SelectMany(galaxy => galaxy.Stars)));
+                                Console.WriteLine(GetListedSpaceObject(galaxies.SelectMany(galaxy => galaxy.Stars)) ?? "None");
                                 break;
                             case "planets":
-                                Console.WriteLine(GetListedSpaceObject(galaxies.SelectMany(galaxy => galaxy.Stars).SelectMany(stars => stars.Planets)));
+                                Console.WriteLine(GetListedSpaceObject(galaxies.SelectMany(galaxy => galaxy.Stars).SelectMany(stars => stars.Planets)) ?? "None");
                                 break;
                             case "moons":
-                                Console.WriteLine(GetListedSpaceObject(galaxies.SelectMany(galaxy => galaxy.Stars).SelectMany(stars => stars.Planets).SelectMany(planet => planet.Moons)));
+                                Console.WriteLine(GetListedSpaceObject(galaxies.SelectMany(galaxy => galaxy.Stars).SelectMany(stars => stars.Planets).SelectMany(planet => planet.Moons)) ?? "None");
                                 break;
                             default:
                                 break;
@@ -101,7 +101,7 @@ namespace ConsoleApp1
                     case "print":
                         var galaxyResearchName = GetName(splitCommand[1], splitCommand.Length > 2 ? splitCommand[2] : null);
                         Console.WriteLine($"--- Data for {galaxyResearchName} galaxy ---");
-                        Console.WriteLine(galaxies.FirstOrDefault(galaxy => galaxy.Name == galaxyResearchName));
+                        Console.WriteLine(galaxies.FirstOrDefault(galaxy => galaxy.Name == galaxyResearchName)?.ToString() ?? "None");
                         Console.WriteLine($"--- End of data for {galaxyResearchName} galaxy ---");
                         break;
                     default:
@@ -162,7 +162,7 @@ namespace ConsoleApp1
             {
                 sb.Append($"{next.Name}, ");
                 return sb;
-            }, sb => sb.ToString().TrimEnd(',').Trim(' '));
+            }, sb => sb.ToString().TrimEnd(' ').Trim(','));
         }
 
         static string GetName(string firstPart, string secondPart = null)

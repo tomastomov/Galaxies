@@ -28,15 +28,19 @@ namespace ConsoleApp1
 
             stringBuilder.AppendLine($"Type: {GalaxyType}");
             stringBuilder.AppendLine($"Age {Age}");
+            stringBuilder.AppendLine($"Stars: ");
             if (Stars.Count > 0)
             {
-                stringBuilder.AppendLine($"Stars: ");
                 foreach (var star in Stars)
                 {
                     stringBuilder.AppendLine(star.ToString());
                 }
             }
-            
+            else
+            {
+                stringBuilder.AppendLine("         None");
+            }
+
 
             return stringBuilder.ToString();
         }

@@ -30,16 +30,20 @@ namespace ConsoleApp1
             stringBuilder.AppendLine($"           Name: {Name}");
             stringBuilder.AppendLine($"           Type: {PlanetType}");
             stringBuilder.AppendLine($"           Support Life: {isInhabitated}");
+            stringBuilder.AppendLine($"           Moons:");
 
             if (Moons.Count > 0)
             {
-                stringBuilder.AppendLine($"           Moons:");
 
                 foreach (var moon in Moons)
                 {
                     stringBuilder.AppendLine(moon.ToString());
                 }
 
+            }
+            else
+            {
+                stringBuilder.AppendLine("               None");
             }
 
             return stringBuilder.ToString();
